@@ -17,7 +17,7 @@ class ExpenseService:
         """
         llm = OpenAI(openai_api_key=os.environ.get("OPENAI_API_KEY"))
 
-        question = f'Hello, you are a sentence classifier and you must classify the sentence I am going to tell you in one of these expense categories. Please, just answer a word that represents exactly one of the words in the following array (Do not translate the category please) then, separated by "," put the amount (just the number).If you think the message is not an expense, for example it is a greeting or you cant find complete information for example the amount is missing (buy pizza for example) answer None.  {os.environ.get("CATEGORIES")}  Phrase is:  "{text}"'
+        question = f'Hello, you are a sentence sorter and you must sort the sentence I am about to tell you into one of these expense categories. Please answer a word that represents exactly one of the words in the following matrix(Do not translate the category please) then, separated by "," put the amount(just the number).if you think the message is not an expense, for example it is a greeting or you cant find the complete information for example the amount is missing(buy pizza for example) answer None. If you contact a purchase but you cant find it in a category and we have a category for others, use it. {os.environ.get("CATEGORIES")}  Phrase is:  "{text}"'
 
         answer = llm.predict(question).strip()
 

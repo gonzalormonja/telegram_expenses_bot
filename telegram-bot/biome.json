@@ -1,0 +1,40 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+	"organizeImports": {
+		"enabled": true,
+		"include": ["**/src/**/*.ts"],
+		"ignore": ["**/src/**/stripe.service.spec.ts"]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"useBlockStatements": "error",
+				"useImportType": "off"
+			},
+			"suspicious": {
+				"noConsoleLog": "error",
+				"noArrayIndexKey": "warn"
+			},
+			"correctness": {
+				"noUnusedVariables": "error",
+				"noUnusedImports": "error"
+			}
+		},
+		"include": ["**/src/**/*.ts"]
+	},
+	"formatter": {
+		"enabled": true,
+		"include": ["**/src/**/*.ts"]
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "always"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
+	}
+}

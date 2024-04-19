@@ -7,6 +7,14 @@ export class UserService {
         this.userRepository = new UserRepository()
     }
 
+    public async create(telegram_id) {
+        const user = await this.getByTelegramId(telegram_id)
+        if (user) {
+            throw new Error('User already exist')
+        }
+        return this.userRepository.create(telegram_id)
+    }
+
     public async getByTelegramId(telegramId: string) {
         return this.userRepository.getByTelegramId(telegramId)
     }

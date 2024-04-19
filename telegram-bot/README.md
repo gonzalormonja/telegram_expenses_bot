@@ -20,3 +20,4 @@ If you want to use the application without docker you must:
 * express: to receive the http request to create a new user
 * jsonwebtoken: to create a token to authenticate against the python service
 * telegraf: to create a telegram bot
+* pg: to database connection

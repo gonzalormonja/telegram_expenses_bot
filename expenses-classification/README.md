@@ -23,3 +23,4 @@ If you want to use the application without docker you must:
 * python-dotenv: To configure the environment variables
 * autopep8: To format the code
 * PyJWT: To decode the user token
+* psycopg2-binary: to database connection

@@ -26,7 +26,7 @@ export class TelegramHandlerController {
                 const userToken = await this.userService.getUserToken(user)
 
                 const response = await axios.post(
-                    'http://localhost:8000/api/v1/register_expense',
+                    `${env.CLASSIFICATION_API_URL}/api/v1/register_expense`,
                     {
                         text: ctx.message.text,
                         telegram_id: ctx.message.chat.id,

@@ -2,8 +2,7 @@
 
 You will need to get the following variables to be able to use the application:
 
-SUPABASE_URL
-SUPABASE_KEY
+POSTGRES_URL
 OPENAI_API_KEY
 
 In addition, you can configure the list of categories to register using the CATEGORIES environment variable.

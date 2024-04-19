@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 import os
-from supabase import create_client, Client
+import psycopg2
 
 
 class ExpenseRepository:
@@ -8,12 +8,14 @@ class ExpenseRepository:
     Class for the repository of the expense.
     """
 
-    db = None
-
     def __init__(self):
-        url: str = os.environ.get("SUPABASE_URL")
-        key: str = os.environ.get("SUPABASE_KEY")
-        self.supabase: Client = create_client(url, key)
+        self.conn = psycopg2.connect(
+            dbname=os.environ.get("POSTGRES_DBNAME"),
+            user=os.environ.get("POSTGRES_USER"),
+            password=os.environ.get("POSTGRES_PASSWORD"),
+            host=os.environ.get("POSTGRES_HOST"),
+            port=os.environ.get("POSTGRES_PORT"),
+        )
 
     def create(self,
                user_id: str,
@@ -23,10 +25,11 @@ class ExpenseRepository:
         """
         Create new expense in the database.
         """
-        self.supabase.table('expenses').insert({
-            "user_id": user_id,
-            "description": description,
-            "amount": amount,
-            "category": category,
-            "added_at": datetime.now().astimezone(timezone.utc).isoformat()
-        }).execute()
+        cur = self.conn.cursor()
+        cur.execute(
+            "INSERT INTO expenses (user_id, description, amount, category, added_at) VALUES (%s, %s, %s, %s, %s)",
+            (user_id, description, amount, category,
+             datetime.now().astimezone(timezone.utc))
+        )
+        self.conn.commit()
+        cur.close()

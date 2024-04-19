@@ -47,11 +47,6 @@ async def expense(data: dict,
     try:
         response = service.save_expense(current_user['id'], data['text'])
     except Exception as e:
-        if str(e) == 'User not found':
-            return {
-                'success': False,
-                'message': ''
-            }
         if str(e) == 'The message is not an expense':
             return {
                 'success': False,

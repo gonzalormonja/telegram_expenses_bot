@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  expenses-classification:
+    container_name: expenses-classification
+    build:
+      context: ./expenses-classification
+      dockerfile: Dockerfile
+    volumes:
+      - ./expenses-classification:/app
+  
+  telegram-bot:
+    container_name: telegram-bot
+    build:
+      context: ./telegram-bot
+      dockerfile: Dockerfile
+    volumes:
+      - ./telegram-bot:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - expenses-classification

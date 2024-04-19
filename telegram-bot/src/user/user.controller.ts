@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import { UserService } from "./user.service.js"
+import { Client } from "pg";
 
 export class UserController {
     private userService: UserService
 
-    constructor() {
-        this.userService = new UserService()
+    constructor(private db: Client) {
+        this.userService = new UserService(this.db)
     }
 
     public async create(req: Request, res: Response) {

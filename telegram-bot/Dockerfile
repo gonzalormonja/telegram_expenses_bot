@@ -7,6 +7,6 @@ COPY package-lock.json .
 
 RUN npm install
 
-COPY . .
+COPY ./src .
 
 CMD ["npx", "ts-node", "src/index.ts"]

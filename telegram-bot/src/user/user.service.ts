@@ -1,10 +1,11 @@
+import { Client } from "pg";
 import { UserRepository } from "./user.repository.js";
 import jwt from 'jsonwebtoken'
 
 export class UserService {
     private userRepository: UserRepository
-    constructor() {
-        this.userRepository = new UserRepository()
+    constructor(private db: Client) {
+        this.userRepository = new UserRepository(this.db)
     }
 
     public async create(telegram_id) {

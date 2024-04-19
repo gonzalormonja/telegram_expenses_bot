@@ -3,16 +3,17 @@ import { env } from "process";
 import { Telegraf } from "telegraf";
 import { message } from 'telegraf/filters'
 import { UserService } from "./../user/user.service.js";
+import { Client } from "pg";
 
 export class TelegramHandlerController {
 
     private bot: Telegraf
     private userService: UserService
 
-    constructor() {
+    constructor(private db: Client) {
         const token = env.TELEGRAM_BOT_TOKEN;
         this.bot = new Telegraf(token);
-        this.userService = new UserService()
+        this.userService = new UserService(this.db)
     }
 
     public async listen() {

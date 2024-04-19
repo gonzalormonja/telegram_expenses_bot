@@ -3,8 +3,7 @@
 You will need to get the following variables to be able to use the application:
 
 TELEGRAM_BOT_TOKEN
-SUPABASE_URL
-SUPABASE_KEY
+POSTGRES_URL
 
 ### Use without docker
 

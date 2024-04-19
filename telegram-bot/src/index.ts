@@ -17,7 +17,7 @@ async function main() {
 
 	app.use(bodyParser.json());
 
-	app.post('/api/users', (req, res) => userController.create(req, res))
+	app.post('/api/v1/users', (req, res) => userController.create(req, res))
 
 	app.listen(port, async () => {
 		console.log(`Server start at http://localhost:${port}`);

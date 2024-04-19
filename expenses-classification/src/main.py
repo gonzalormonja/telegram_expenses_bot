@@ -1,4 +1,4 @@
-from register_expense.register_expense_controller import app
+from expense.expense_controller import app
 from dotenv import load_dotenv
 
 load_dotenv()

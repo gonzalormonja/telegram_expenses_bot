@@ -3,7 +3,10 @@ import os
 from supabase import create_client, Client
 
 
-class RegisterExpenseRepository:
+class ExpenseRepository:
+    """
+    Class for the repository of the expense.
+    """
 
     db = None
 
@@ -17,6 +20,9 @@ class RegisterExpenseRepository:
                description: str,
                amount: float,
                category: str) -> bool:
+        """
+        Create new expense in the database.
+        """
         self.supabase.table('expenses').insert({
             "user_id": user_id,
             "description": description,

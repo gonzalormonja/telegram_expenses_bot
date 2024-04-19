@@ -34,6 +34,11 @@ This will start both services.
 
 To create a new user you can simply use the POST api/users endpoint with the body {telegram_id}.
 This endpoint has no authentication, it is only to allow the testing of the application. 
+Example
+```
+curl -X POST http://<URL>:<PORT>/api/v1/users -H 'Content-Type: application/json' -d '{"telegram_id":45}'
+```
+
 
 #### Get Telegram user id
 You must search for the bot called @userinfobot (the bot, there are fake groups, be careful).
